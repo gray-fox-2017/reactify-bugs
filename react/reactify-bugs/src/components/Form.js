@@ -1,9 +1,12 @@
 import React from 'react'
 
+var Chance = require('chance'),
+    chance = new Chance();
+
 class Form extends React.Component {
   saveBug (e) {
     const bug = {
-      // id: chance.guid(),
+      id: chance.guid(),
       description: document.getElementById('description').value,
       severity: document.getElementById('severity').value,
       assignedTo: document.getElementById('assignedTo').value,
