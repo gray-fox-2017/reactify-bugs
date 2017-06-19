@@ -4,11 +4,6 @@ import Form from './Form';
 import List from './List';
 import Footer from './Footer';
 
-// Load Chance
-var Chance = require('chance');
-// Instantiate Chance so it can be used
-var chance = new Chance();
-
 class App extends React.Component {
   render() {
     const bugs = this._getBugs();
@@ -34,7 +29,7 @@ class App extends React.Component {
     return bugs.map((bug) => {
       return (
         <List
-          description={bug.description} severity={bug.severity} status={bug.status} assignedTo={bug.assignedTo} id={bug.id} />
+          description={bug.description} severity={bug.severity} status={bug.status} assignedTo={bug.assignedTo} id={bug.id} key={bug.id}/>
       );
     })
   }
