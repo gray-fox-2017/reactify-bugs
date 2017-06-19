@@ -3,7 +3,7 @@ import React from 'react'
 class ReportItem extends React.Component {
   render() {
     const { item } = this.props
-    console.log('ini item:^^^^^', item);
+    // console.log('ini item:^^^^^', item);
 
     return (
       <div className="card">
@@ -22,8 +22,8 @@ class ReportItem extends React.Component {
           <small className="tag is-primary">{item.status}</small>
         </div>
         <footer className="card-footer">
-          <a className="is-warning card-footer-item">Close</a>
-          <a className="card-footer-item">Delete</a>
+          <a id={item.id} className="is-warning card-footer-item" onClick={this.props.handleEdit}>Close</a>
+          <a id={item.id} className="card-footer-item" onClick={this.props.handleDelete}>Delete</a>
         </footer>
       </div>
     )

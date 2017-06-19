@@ -1,27 +1,18 @@
 import React from 'react'
 
 class FormAdd extends React.Component {
-  saveBug(e) {
-    const bug = {
-      id: new Date(),
-      description: document.getElementById('description').value,
-      severity: document.getElementById('severity').value,
-      assignedTo: document.getElementById('assignedTo').value,
-      status: 'Open'
-    }
+  // saveBug(e) {
+  //   const bug = {
+  //     id: new Date(),
+  //     description: document.getElementById('description').value,
+  //     severity: document.getElementById('severity').value,
+  //     assignedTo: document.getElementById('assignedTo').value,
+  //     status: 'Open'
+  //   }
+  //
+  //
+  // }
 
-    console.log('data input: ', bug);
-
-    let bugs = []
-    if (localStorage.getItem('bugs') !== null) {
-      bugs = JSON.parse(localStorage.getItem('bugs'))
-    }
-    bugs.push(bug)
-    localStorage.setItem('bugs', JSON.stringify(bugs))
-
-    e.preventDefault()
-  }
-  
   render() {
     return (
       <div>
@@ -31,12 +22,12 @@ class FormAdd extends React.Component {
             <form>
               <label className="label">Description</label>
               <p className="control">
-                <input className="input" type="text" id="description" placeholder="Describe a bug..." />
+                <input onChange={this.props.handleDesc} className="input" type="text" id="description" placeholder="Describe a bug..." value={this.props.description}/>
               </p>
               <label className="label">Severity</label>
               <p className="control">
                 <span className="select">
-                  <select id="severity" name="severity">
+                  <select id="severity" name="severity" onChange={this.props.handleSeverity} value={this.props.severity}>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
@@ -45,11 +36,11 @@ class FormAdd extends React.Component {
               </p>
               <label className="label">Assigned To</label>
               <p className="control">
-                <input className="input" type="text" id="assignedTo" placeholder="Enter responsible..." />
+                <input onChange={this.props.handleAssignTo} className="input" type="text" id="assignedTo" placeholder="Enter responsible..." value={this.props.assignedTo} />
               </p>
               <div className="control is-grouped">
                 <p className="control">
-                  <button className="button is-warning" onClick={this.saveBug}>Submit</button>
+                  <button className="button is-warning" onClick={this.props.handleSubmit}>Submit</button>
                 </p>
               </div>
             </form>

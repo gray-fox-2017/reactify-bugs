@@ -5,20 +5,26 @@ import ReportItem from './ReportItem'
 class ListReport extends React.Component {
 
   render() {
-    let bugs = JSON.parse(localStorage.getItem('bugs')) || []
-    console.log('ini bugs:****** ', bugs);
+    console.log('++++++++', this.props.bugs);
+    if (this.props.bugs.length > 0) {
+      return (
 
-    return (
-      <div className="columns is-mobile">
-        <div className="column is-medium">
-          {bugs.map((item, index) => {
-            return (
-              <ReportItem item={item} key={index} />
-            )
-          })}
+        <div className="columns is-mobile">
+          <div className="column is-medium">
+            {this.props.bugs.map((item, index) => {
+              return (
+                <ReportItem item={item} key={index} handleDelete={this.props.handleDelete} handleEdit={this.props.handleEdit}/>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+
   }
 }
 
