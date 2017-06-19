@@ -1,29 +1,12 @@
 import React, { Component } from 'react';
-import chance from 'chance'
 
 class FormNewBug extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      bugName: 'asdfasd',
-      assignedTo: 'asdas',
-      severity: 'asdas'
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(event){
-    this.setState({
-      bugName: event.target.value,
-      assignedTo: event.target.value,
-      severity: event.target.value
-    })
-  }
   handleSubmit(event) {
     const bug = {
-      id: "asdadada",
-      description: '',
-      severity: '',
-      assignedTo: '',
+      id: new Date(),
+      description: document.getElementById('description').value,
+      severity: document.getElementById('severity').value,
+      assignedTo: document.getElementById('assignedTo').value,
       status: 'Open'
     }
 
@@ -42,15 +25,15 @@ class FormNewBug extends Component {
         <section className="hero is-medium">
           <div className="hero-body">
             <h2 className="title">Add New Bug Report:</h2>
-            {/* <form onSubmit={this.handleSubmit} id="bugInputForm"> */}
+             <form id="bugInputForm">
               <label className="label" for="">Description</label>
             <p className="control">
-                <input className="input" value={this.state.bugName} type="text" id="description" placeholder="Describe a bug..." onChange={this.handleChange}/>
+                <input className="input" type="text" id="description" placeholder="Describe a bug..."/>
               </p>
               <label className="label" for="">Severity</label>
             <p className="control">
                 <span className="select">
-                  <select id="severity" name="severity" value={this.state.severity} onChange={this.handleChange}>
+                  <select id="severity" name="severity" >
                     <option value="low">Low</option>
                   <option value="medium">Medium</option>
                 <option value="high">High</option>
@@ -59,14 +42,14 @@ class FormNewBug extends Component {
               </p>
               <label className="label" for="">Assigned To</label>
             <p className="control">
-                <input className="input" type="text" id="assignedTo" placeholder="Enter responsible..." value={this.state.assignedTo} onChange={this.handleChange}/>
+                <input className="input" type="text" id="assignedTo" placeholder="Enter responsible..."/>
               </p>
               <div className="control is-grouped">
                 <p className="control">
                   <button className="button is-warning" type="submit" onClick={this.handleSubmit}>Submit</button>
                 </p>
               </div>
-            {/* </form> */}
+             </form>
           </div>
         </section>
       </div>

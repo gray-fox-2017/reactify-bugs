@@ -1,51 +1,41 @@
 import React, { Component } from 'react'
 
 class ListBugs extends Component {
-  handleBugs(){
-    let bugs = JSON.parse(localStorage.getItem('bugs')) || []
-    let listBugsElement = document.getElementById('listBugs')
-
-    listBugsElement.innerHTML = ''
-
-    for(let i = 0; i < bugs.length; i++) {
-      let id = bugs[i].id
-      let desc = bugs[i].description
-      let severity = bugs[i].severity
-      let assignedTo = bugs[i].assignedTo
-      let status = bugs[i].status
-
-      listBugsElement.innerHTML += `<div class="card">
-        <header class="card-header">
-          <p class="card-header-title">
-          BugId: ${id}
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            ${desc}
-            <span class="tag is-info">${severity}</span>
-            <p>Assigned To: ${assignedTo}</p>
-          </div>
-          <br>
-          <small class="tag is-primary">${status}</small>
-        </div>
-        <footer class="card-footer">
-          <a onclick="setStatusClosed('${id}')" class="is-warning card-footer-item">Close</a>
-          <a class="card-footer-item" onclick="deleteBug('${id}')">Delete</a>
-        </footer>
-      </div>
-        <br>`
-    }
-  }
   render() {
+    let bugs = JSON.parse(localStorage.getItem('bugs')) || []
     return (
       <div className="columns">
-        <div className="column is-medium" id="listBugs"></div>
+        <div className="column is-medium" id="listBugs">
+        {bugs.map((bug, index)=>{
+          return (
+            <div key={index}>
+              <div className="card" >
+                <header className="card-header">
+                  <p className="card-header-title">
+                    BugId: {bug.id}
+                  </p>
+                </header>
+                <div className="card-content">
+                  <div className="content">
+                    {bug.description}
+                    <span className="tag is-info">{bug.severity}</span>
+                    <p>Assigned To: {bug.assignedTo}</p>
+                  </div>
+                <br />
+                <small className="tag is-primary">{bug.status}</small>
+                </div>
+                <footer className="card-footer">
+                <a onClick="" className="is-warning card-footer-item">Close</a>
+                <a className="card-footer-item" onClick="">Delete</a>
+                </footer>
+              </div>
+              <br />
+            </div>
+          )
+        })}
+        </div>
       </div>
     )
-  }
-  componentDidMount(){
-    this.handleBugs()
   }
 }
 
