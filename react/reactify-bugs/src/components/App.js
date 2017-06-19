@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import Form from './Form.js'
 import Footer from './Footer.js'
+import ListBugs from './ListBugs.js'
 
 class App extends React.Component {
   render() {
@@ -15,7 +16,9 @@ class App extends React.Component {
           <hr />
 
           <div className="columns">
-            <div className="column is-medium" id="listBugs"></div>
+            <div className="column is-medium" id="listBugs">
+              <ListBugs />
+            </div>
           </div>
         </div>
         <Footer />
