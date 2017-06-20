@@ -24,7 +24,7 @@ class ListOfBugs extends React.Component {
             </header>
             <div className="card-content">
               <div className="content">
-                {bug.desc}
+                {bug.description}
                 <span className="tag is-info">{bug.severity}</span>
                 <p>Assigned To: {bug.assignedTo}</p>
               </div>
