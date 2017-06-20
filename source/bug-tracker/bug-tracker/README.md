@@ -1,3 +1,5 @@
+All functions are good to go, yet since there is no communication between components yet, so you need to refresh to get the new view after changing something.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
